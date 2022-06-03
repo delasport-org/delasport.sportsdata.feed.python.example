@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  markets.feed:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: python.consumer
+    environment: {
+      SCHEMA_REGISTRY_URL: '',
+      SCHEMA_REGISTRY_BASIC_AUTH_USER_INFO: '',
+      CONFLUENT_SCHEMA_ID: '',
+      BOOTSTRAP_SERVERS: '',
+      CONFLUENT_API_KEY: '',
+      CONFLUENT_API_SECRET: '',
+      CONFLUENT_GROUP_ID: '',
+      TOPIC_NAME: 'feed.sportsdata.pilot.full.market',
+      CONSUMER_TYPE: 'market_consume'
+    }
+
+  events.feed:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: python.consumer
+    environment: {
+      SCHEMA_REGISTRY_URL: '',
+      SCHEMA_REGISTRY_BASIC_AUTH_USER_INFO: '',
+      CONFLUENT_SCHEMA_ID: '',
+      BOOTSTRAP_SERVERS: '',
+      CONFLUENT_API_KEY: '',
+      CONFLUENT_API_SECRET: '',
+      CONFLUENT_GROUP_ID: '',
+      TOPIC_NAME: 'feed.sportsdata.pilot.full.event.live',
+      CONSUMER_TYPE: 'event_consume'
+    }
