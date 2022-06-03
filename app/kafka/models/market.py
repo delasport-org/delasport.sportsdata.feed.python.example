@@ -8,11 +8,9 @@ class Odd(BaseModel):
     value: Optional[str]
 
     """
-    Converts object literal(dict) to a Clock instance.
+    Converts object literal(dict) to a Odd instance.
     Args:
-        ctx (SerializationContext): Metadata pertaining to the serialization
-            operation.
-    obj (dict): Object literal(dict)
+        obj (dict): Object literal(dict)
     """
     @staticmethod
     def from_dict(obj: dict):
@@ -40,6 +38,13 @@ class MarketMessage(BaseModel):
     is_suspended: Optional[int]
     odds: List[Odd] = []
 
+    """
+    Converts object literal(dict) to a MarketMessage instance.
+    Args:
+        ctx (SerializationContext): Metadata pertaining to the serialization
+            operation.
+        obj (dict): Object literal(dict)
+    """
     @staticmethod
     def from_dict(obj, ctx):
         market = MarketMessage(

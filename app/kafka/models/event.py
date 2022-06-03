@@ -9,8 +9,6 @@ class Country(BaseModel):
     """
     Converts object literal(dict) to a Country instance.
     Args:
-        ctx (SerializationContext): Metadata pertaining to the serialization
-            operation.
         obj (dict): Object literal(dict)
     """
     @staticmethod
@@ -30,12 +28,10 @@ class Sport(BaseModel):
     key: Optional[str]
 
     """
-        Converts object literal(dict) to a Sport instance.
-        Args:
-            ctx (SerializationContext): Metadata pertaining to the serialization
-                operation.
-            obj (dict): Object literal(dict)
-        """
+    Converts object literal(dict) to a Sport instance.
+    Args:
+        obj (dict): Object literal(dict)
+    """
     @staticmethod
     def from_dict(obj: dict) -> object:
         if obj is None:
@@ -56,8 +52,6 @@ class League(BaseModel):
     """
     Converts object literal(dict) to a League instance.
     Args:
-        ctx (SerializationContext): Metadata pertaining to the serialization
-            operation.
         obj (dict): Object literal(dict)
     """
     @staticmethod
@@ -81,8 +75,6 @@ class Clock(BaseModel):
     """
     Converts object literal(dict) to a Clock instance.
     Args:
-       ctx (SerializationContext): Metadata pertaining to the serialization
-           operation.
        obj (dict): Object literal(dict)
     """
     @staticmethod
@@ -104,11 +96,9 @@ class Team(BaseModel):
     color: Optional[str]
 
     """
-    Converts object literal(dict) to a Clock instance.
+    Converts object literal(dict) to a Team instance.
     Args:
-        ctx (SerializationContext): Metadata pertaining to the serialization
-            operation.
-    obj (dict): Object literal(dict)
+        obj (dict): Object literal(dict)
     """
     @staticmethod
     def from_dict(obj: dict) -> object:
@@ -131,11 +121,9 @@ class LiveScore(BaseModel):
     away_team: str
 
     """
-    Converts object literal(dict) to a Clock instance.
+    Converts object literal(dict) to a LiveScore instance.
     Args:
-        ctx (SerializationContext): Metadata pertaining to the serialization
-            operation.
-    obj (dict): Object literal(dict)
+        obj (dict): Object literal(dict)
     """
     @staticmethod
     def from_dict(obj: dict):
@@ -171,6 +159,13 @@ class EventMessage(BaseModel):
     home_team: Optional[Team] = None
     live_scores: List[LiveScore] = []
 
+    """
+    Converts object literal(dict) to a EventMessage instance.
+    Args:
+        ctx (SerializationContext): Metadata pertaining to the serialization
+            operation.
+        obj (dict): Object literal(dict)
+    """
     @staticmethod
     def from_dict(obj, ctx):
         event = EventMessage(
