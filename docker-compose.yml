@@ -1,6 +1,23 @@
 version: '3.8'
 
 services:
+  settlement.feed:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: python.consumer
+    environment: {
+      SCHEMA_REGISTRY_URL: '',
+      SCHEMA_REGISTRY_BASIC_AUTH_USER_INFO: '',
+      CONFLUENT_SCHEMA_ID: '',
+      BOOTSTRAP_SERVERS: '',
+      CONFLUENT_API_KEY: '',
+      CONFLUENT_API_SECRET: '',
+      CONFLUENT_GROUP_ID: '',
+      TOPIC_NAME: 'feed.sportsdata.pilot.settlement.result',
+      CONSUMER_TYPE: 'result_settlement_consume'
+    }
+
   markets.feed:
     build:
       context: .
